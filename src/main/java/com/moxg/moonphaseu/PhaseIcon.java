@@ -16,11 +16,15 @@ public class PhaseIcon {
     private static final Formatting[] FULLNESS_COLOR = new Formatting[]
             {Formatting.RED, Formatting.GOLD, Formatting.YELLOW, Formatting.GREEN, Formatting.DARK_GREEN};
 
+
     void drawPhaseIcon(DrawContext context, int hudPosition) {
+        MinecraftClient mc = MinecraftClient.getInstance();
+        if (mc.options.hudHidden || mc.getDebugHud().shouldShowDebugHud()) {
+            return;
+        }
         if (hudPosition == 0) {
             hudPosition = 4;
         }
-        MinecraftClient mc = MinecraftClient.getInstance();
         int windowWidth = mc.getWindow().getScaledWidth();
         int windowHeight = mc.getWindow().getScaledHeight();
 
